@@ -1,0 +1,28 @@
+body#fullDisclosure {
+	background-color: #FCFA8E;
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+#fullDisclosure .footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
+
+input#searchbox {
+	width: 100%;
+}
+
+/* Allows the nav bar search autocomplete to show without scrolling */
+.navbar-collapse.in {
+	overflow-y: visible;
+}

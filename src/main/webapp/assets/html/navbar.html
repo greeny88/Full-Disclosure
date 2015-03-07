@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default" data-ng-controller="NavBarCtrl">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle"
+				data-ng-click="navbarCollapsed = !navbarCollapsed">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/">Full Disclosure</a>
+		</div>
+		<div class="collapse navbar-collapse" collapse="navbarCollapsed">
+			<ul class="nav navbar-nav">
+				<li><a href="#/archive">Archive</a></li>
+				<li><a href="#/resources">Resources</a></li>
+				<li><a href="#/about">About</a></li>
+			</ul>
+			<div class="navbar-form input-group">
+				<input type="text" class="form-control"
+					placeholder="Find a Blog Post by Title"
+					typeahead="post as post.title for post in posts | filter:$viewValue"
+					typeahead-on-select="onSelect($item, $model, $label)"
+					data-ng-model="selectedPost" id="searchbox"> <span class="input-group-btn">
+					<button class="btn btn-default" type="button" data-ng-click="viewPost(selectedPost)">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,29 @@
+{
+  "name": "Full_Disclosure",
+  "version": "1.0.0",
+  "description": "A blog for Jenn",
+  "main": "index.html",
+  "authors": [
+    "Matthew Green"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "angular": "~1.2.28",
+    "restangular": "~1.4.0",
+    "angular-route": "~1.2.28",
+    "angular-bootstrap": "~0.12.0",
+    "angular-sanitize": "~1.2.28"
+  },
+  "resolutions": {
+    "angular": "~1.2.28"
+  }
+}
