@@ -36405,7 +36405,7 @@ module.provider('Restangular', function() {
 angular.module('Full_Disclosure', [ 'ngRoute', 'ngSanitize', 'restangular', 'ui.bootstrap' ]);
 
 angular.module('Full_Disclosure')
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
 	.when('/', {
 		title: '',
@@ -36435,6 +36435,7 @@ angular.module('Full_Disclosure')
 	.otherwise({
 		redirectTo: '/about'
 	});
+	$locationProvider.html5Mode(true);
 }])
 .run(['Restangular', function(Restangular) {
 	Restangular.setBaseUrl('/wp/?json_route=');
@@ -36516,7 +36517,7 @@ angular.module('Full_Disclosure')
 		modalInstance.result.then(function () {
 			$scope.mature = false;
 		},  function() {
-			$location.path('#/home');
+			$location.path('/home');
 		});
 	}
 }])

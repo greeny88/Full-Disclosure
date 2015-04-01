@@ -3,7 +3,7 @@
 angular.module('Full_Disclosure', [ 'ngRoute', 'ngSanitize', 'restangular', 'ui.bootstrap' ]);
 
 angular.module('Full_Disclosure')
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
 	.when('/', {
 		title: '',
@@ -33,6 +33,7 @@ angular.module('Full_Disclosure')
 	.otherwise({
 		redirectTo: '/about'
 	});
+	$locationProvider.html5Mode(true);
 }])
 .run(['Restangular', function(Restangular) {
 	Restangular.setBaseUrl('/wp/?json_route=');

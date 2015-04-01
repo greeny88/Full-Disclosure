@@ -67,7 +67,7 @@ angular.module('Full_Disclosure')
 		modalInstance.result.then(function () {
 			$scope.mature = false;
 		},  function() {
-			$location.path('#/home');
+			$location.path('/home');
 		});
 	}
 }])
