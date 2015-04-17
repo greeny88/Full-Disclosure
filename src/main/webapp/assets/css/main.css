@@ -23,6 +23,14 @@ input#searchbox {
 }
 
 /* Allows the nav bar search autocomplete to show without scrolling */
-.navbar-collapse.in {
+nav .navbar .navbar-collapse.in {
 	overflow-y: visible;
+}
+
+h1 a.title-permalink {
+	display: none;
+}
+
+h1:hover a.title-permalink {
+	display: inline-block;
 }

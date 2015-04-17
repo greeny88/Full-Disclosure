@@ -36468,16 +36468,16 @@ angular.module('Full_Disclosure')
 			$scope.postLoaded = true;
 			$scope.post = post;
 			$rootScope.title += post.title;
-			angular.forEach(post.terms.category, function(value, key) {
+			angular.forEach(post.terms.post_tag, function(value, key) {
 				if (value.name == 'NSFW') {
 					$scope.mature = true;
 					$scope.open();
 				}
 			});
 		});
-		Posts.getComments(postId, function(comments) {
-			$scope.comments = comments;
-		});
+//		Posts.getComments(postId, function(comments) {
+//			$scope.comments = comments;
+//		});
 	}
 	$scope.mature = false;
 	$scope.postLoaded = false;
@@ -36522,10 +36522,12 @@ angular.module('Full_Disclosure')
 	}
 }])
 .controller('ResourcesCtrl', ['$scope', function($scope) {
-	
+	//TODO: Build page from specific category
 }])
-.controller('AboutCtrl', ['$scope', function($scope) {
-	
+.controller('AboutCtrl', ['$scope', 'Posts', function($scope, Posts) {
+	Posts.getAboutPage(function(about) {
+		$scope.about = about;
+	});
 }])
 .controller('ArchiveCtrl', ['$scope', 'Posts', function($scope, Posts) {
 	Posts.getPosts(function(posts) {
@@ -36546,14 +36548,15 @@ angular.module('Full_Disclosure')
 	var Posts = {};
 	var currentPost = {};
 	var currentPosts = undefined;
+	var categoriesToFilter = '-5';
 	Posts.getCurrentPost = function() {
 		return currentPost;
-	}
+	};
 	Posts.getPosts = function(callback) {
 		if (currentPosts) {
 			callback(currentPosts);
 		} else {
-			Restangular.all('posts').getList().then(function(posts) {
+			Restangular.all('posts').getList({'filter[cat]':categoriesToFilter}).then(function(posts) {
 				currentPosts = posts;
 				callback(posts);
 			});
@@ -36564,23 +36567,23 @@ angular.module('Full_Disclosure')
 			currentPost = post;
 			callback(post);
 		});
-	}
+	};
 	Posts.getNewestPost = function(callback) {
-		Restangular.one('posts').get({'filter[posts_per_page]':1,'filter[orderBy]':'date'}).then(function(post) {
+		Restangular.one('posts').get({'filter[posts_per_page]':1,'filter[orderBy]':'date','filter[cat]':categoriesToFilter}).then(function(post) {
 			callback(post);
 		});
-	}
+	};
 	Posts.getNewestNumberofPosts = function(amount, callback) {
-		Restangular.one('posts').get({'filter[posts_per_page]':amount,'filter[orderBy]':'date'}).then(function(post) {
+		Restangular.one('posts').get({'filter[posts_per_page]':amount,'filter[orderBy]':'date','filter[cat]':categoriesToFilter}).then(function(post) {
 			callback(post);
 		});
-	}
+	};
 	Posts.getComments = function(postId, callback) {
 		var time = Date.now();
 		Restangular.one('posts', postId).one('comments').get({date:time}).then(function(comments) {
 			callback(comments)
 		});
-	}
+	};
 	Posts.saveComment = function(postId, comment, callback) {
 		console.log(comment);
 		Restangular.one('posts', postId).post('comments', comment).then(function() {
@@ -36588,6 +36591,14 @@ angular.module('Full_Disclosure')
 		}, function() {
 			callback(false);
 		});
-	}
+	};
+	//TODO: Retrieve specific resource posts
+	
+	Posts.getAboutPage = function(callback) {
+		var aboutId = 34;
+		Restangular.one('posts', aboutId).get().then(function(about) {
+			callback(about);
+		});
+	};
 	return Posts;
 }]);

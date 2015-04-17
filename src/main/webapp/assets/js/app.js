@@ -7,27 +7,27 @@ angular.module('Full_Disclosure')
 	$routeProvider
 	.when('/', {
 		title: '',
-		templateUrl: 'assets/html/post.html',
+		templateUrl: '/assets/html/post.html',
 		controller: 'PostCtrl'
 	})
 	.when('/resources', {
 		title: 'Resources',
-		templateUrl: 'assets/html/resources.html',
+		templateUrl: '/assets/html/resources.html',
 		controller: 'ResourcesCtrl'
 	})
 	.when('/archive', {
 		title: 'Archive',
-		templateUrl: 'assets/html/archive.html',
+		templateUrl: '/assets/html/archive.html',
 		controller: 'ArchiveCtrl'
 	})
 	.when('/about', {
 		title: 'About',
-		templateUrl: 'assets/html/about.html',
+		templateUrl: '/assets/html/about.html',
 		controller: 'AboutCtrl'
 	})
 	.when('/post/:postId', {
 		title: '',
-		templateUrl: 'assets/html/post.html',
+		templateUrl: '/assets/html/post.html',
 		controller: 'PostCtrl'
 	})
 	.otherwise({

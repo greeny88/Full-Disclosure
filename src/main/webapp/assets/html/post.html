@@ -3,24 +3,28 @@
 		<div class="col-xs-12 col-sm-8 col-md-9" itemscope
 			itemtype="http://schema.org/BlogPosting">
 			<div data-ng-show="postLoaded">
-			<h1>{{post.title}}</h1>
-			<h6>
-				<span itemprop="author">{{post.author.name}}</span> | <span
-					itemprop="datePublished">{{post.date | date:'yyyy-MM-dd
-					h:mma'}}</span>
-			</h6>
-			<div data-ng-bind-html="post.content" data-ng-show="!mature"
-				itemprop="articleBody"></div>
-			<div>
-				<a
-					data-ng-href="https://www.facebook.com/sharer/sharer.php?u={{currentPage}}"
-					target="_blank">Share on Facebook</a> <a
-					data-ng-href="https://twitter.com/home?status={{currentPage}}"
-					target="_blank">Share on Twitter</a> <a
-					data-ng-href="https://plus.google.com/share?url={{currentPage}}"
-					target="_blank">Share on Google+</a>
-			</div>
-			<!-- <div>
+				<h1>
+					{{post.title}} <a class="title-permalink small"
+						data-ng-href="{{post.link}}"><span
+						class="glyphicon glyphicon-link"></span></a>
+				</h1>
+				<h6>
+					<span itemprop="author">{{post.author.name}}</span> | <span
+						itemprop="datePublished">{{post.date | date:'yyyy-MM-dd
+						h:mma'}}</span>
+				</h6>
+				<div data-ng-bind-html="post.content" data-ng-show="!mature"
+					itemprop="articleBody"></div>
+				<div>
+					<a
+						data-ng-href="https://www.facebook.com/sharer/sharer.php?u={{currentPage}}"
+						target="_blank">Share on Facebook</a> <a
+						data-ng-href="https://twitter.com/home?status={{currentPage}}"
+						target="_blank">Share on Twitter</a> <a
+						data-ng-href="https://plus.google.com/share?url={{currentPage}}"
+						target="_blank">Share on Google+</a>
+				</div>
+				<!-- <div>
 				<div class="form-inline">
 					<label for="inputName">Name:</label> <input type="text"
 						class="form-control" placeholder="Name"

@@ -18,16 +18,16 @@ angular.module('Full_Disclosure')
 			$scope.postLoaded = true;
 			$scope.post = post;
 			$rootScope.title += post.title;
-			angular.forEach(post.terms.category, function(value, key) {
+			angular.forEach(post.terms.post_tag, function(value, key) {
 				if (value.name == 'NSFW') {
 					$scope.mature = true;
 					$scope.open();
 				}
 			});
 		});
-		Posts.getComments(postId, function(comments) {
-			$scope.comments = comments;
-		});
+//		Posts.getComments(postId, function(comments) {
+//			$scope.comments = comments;
+//		});
 	}
 	$scope.mature = false;
 	$scope.postLoaded = false;
@@ -72,10 +72,12 @@ angular.module('Full_Disclosure')
 	}
 }])
 .controller('ResourcesCtrl', ['$scope', function($scope) {
-	
+	//TODO: Build page from specific category
 }])
-.controller('AboutCtrl', ['$scope', function($scope) {
-	
+.controller('AboutCtrl', ['$scope', 'Posts', function($scope, Posts) {
+	Posts.getAboutPage(function(about) {
+		$scope.about = about;
+	});
 }])
 .controller('ArchiveCtrl', ['$scope', 'Posts', function($scope, Posts) {
 	Posts.getPosts(function(posts) {
